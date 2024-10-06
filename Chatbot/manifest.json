@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Madara",
+  "version": "1.0",
+  "description": "Help you from the start to the end",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "runtime",
+    "storage",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "https://estudijas.rtu.lv/*",
+    "https://ortus.rtu.lv/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://estudijas.rtu.lv/*",
+        "https://ortus.rtu.lv/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "chat-widget.html",
+        "chat-widget.css",
+        "chat-widget.js",
+        "assets/*"
+      ],
+      "matches": [
+        "https://estudijas.rtu.lv/*",
+        "https://ortus.rtu.lv/*"
+      ]
+    }
+  ]
+}

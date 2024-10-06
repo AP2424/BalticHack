@@ -1,0 +1,347 @@
+/* Chat Widget CSS */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+}
+#mic {
+    cursor: pointer;
+    /* Add any other necessary styles */
+}
+
+#chat-switcher {
+    background-color: #2b3cb1;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+#chat-switcher:hover {
+    background-color: #e0e0e0;
+}
+
+#start-recording, #stop-recording {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #005551;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#start-recording:hover, #stop-recording:hover {
+    background-color: #00796b;
+}
+
+#stop-recording:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+#recording-status {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#chat-widget {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 450px;
+    min-height: 250px;
+    max-height: 600px;
+    background-color: #fff;
+    border: none;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    border-radius: 16px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+#chat-header {
+    background-color: #005551;
+    color: white;
+    padding: 16px;
+    position: relative;
+}
+
+#chat-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#chat-description {
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+#chat-close-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#chat-body {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+}
+
+#chat-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chat-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+#chat-body::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+#chat-body::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+
+#chat-messages {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-message {
+    margin-bottom: 12px;
+    display: flex;
+}
+
+.chat-message.user {
+    justify-content: flex-end;
+}
+
+.chat-message.user .message-content {
+    background-color: #dcf8c6;
+    color: #000;
+}
+
+.chat-message.responder .message-content {
+    background-color: #fff;
+    color: #000;
+}
+
+.message-content {
+    padding: 12px 16px;
+    border-radius: 18px;
+    max-width: 75%;
+    font-size: 14px;
+    line-height: 1.4;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.message-content img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.message-content::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.chat-message.user .message-content::after {
+    right: -6px;
+    top: 10px;
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent #dcf8c6;
+}
+
+.chat-message.responder .message-content::after {
+    left: -6px;
+    top: 10px;
+    border-width: 6px 6px 6px 0;
+    border-style: solid;
+    border-color: transparent #fff transparent transparent;
+}
+
+.chat-message.responder .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+#chat-input-area {
+    all: unset;
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+}
+
+#chat-input-wrapper {
+    all: unset;
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 24px;
+    padding: 4px 12px;
+}
+
+#chat-input {
+    all: unset;
+    flex: 1;
+    border: none;
+    padding: 8px 0;
+    font-size: 14px;
+    outline: none;
+    background: transparent;
+}
+
+#chat-input-icons {
+    display: flex;
+    gap: 12px;
+    transition: opacity 0.3s ease;
+}
+
+#chat-input:focus ~ #chat-input-icons {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.chat-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#chat-send-button {
+    all: unset;
+    background-color: transparent;
+    color: #005551;
+    border: none;
+    padding: 0 0 0 12px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+#chat-send-button:hover {
+    color: #00796b;
+}
+
+#chat-toggle-button {
+    all: unset;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #005551;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+#chat-toggle-button img {
+    width: 32px;
+    height: 32px;
+}
+
+#chat-close-button:hover {
+    color: #ddd;
+}
+
+#image-modal {
+    all: unset;
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#image-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#modal-image {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+    transform-origin: center center;
+}
+
+#zoom-controls {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#zoom-controls button {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    color: #333;
+    padding: 10px 15px;
+    margin: 0 5px;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#zoom-controls button:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
